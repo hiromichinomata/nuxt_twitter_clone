@@ -5,7 +5,7 @@
         <!-- Left sidebar -->
         <div class="hidden md:block xs-col-span-1 xl:col-span-2">
             <div class="sticky top-0">
-              <SidebarLeft></SidebarLeft>
+              <SidebarLeft />
             </div>
         </div>
 
@@ -27,5 +27,5 @@
 <script setup>
 import { SidebarLeft } from '#components';
 
-  const darkMode = ref(true)
+  const darkMode = ref(false)
 </script>
