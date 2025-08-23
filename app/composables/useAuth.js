@@ -1,4 +1,5 @@
-import jwt_decode from "jwt-decode"
+import { jwtDecode } from "jwt-decode"
+import useFetchApi from "./useFetchApi.js"
 
 export default () => {
     const useAuthToken = () => useState('auth_token')
@@ -74,7 +75,7 @@ export default () => {
             return
         }
 
-        const jwt = jwt_decode(authToken.value)
+        const jwt = jwtDecode(authToken.value)
 
         const newRefreshTime = jwt.exp - 60000
 
