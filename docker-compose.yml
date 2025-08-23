@@ -4,8 +4,11 @@ services:
 
   mongo:
     image: mongo:7.0.23
+    command: ["--replSet","rs0","--bind_ip_all","--keyFile","/data/configdb/keyfile"]
     ports:
       - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: development
       MONGO_INITDB_ROOT_PASSWORD: testpassword
+    volumes:
+      - ./mongo-keyfile:/data/configdb/keyfile

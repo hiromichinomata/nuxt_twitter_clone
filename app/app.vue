@@ -1,6 +1,8 @@
 <template>
 <div :class="{ 'dark' : darkMode }">
-    <div class="min-h-full">
+    <LoadingPage v-if="isAuthLoading" />
+
+    <div v-else-if="user" class="min-h-full">
       <div class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5">
         <!-- Left sidebar -->
         <div class="hidden md:block xs-col-span-1 xl:col-span-2">
@@ -22,10 +24,18 @@
         </div>
       </div>
     </div>
+
+    <AuthPage v-else />
   </div>
 </template>
 <script setup>
-import { SidebarLeft } from '#components';
+const darkMode = ref(false)
+const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth()
+const isAuthLoading = useAuthLoading()
+const user = useAuthUser()
 
-  const darkMode = ref(false)
+onBeforeMount(() => {
+    initAuth()
+})
+
 </script>

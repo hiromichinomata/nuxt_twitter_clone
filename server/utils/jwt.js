@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken"
-
+import { setCookie, deleteCookie } from 'h3'
 
 const generateAccessToken = (user) => {
     const config = useRuntimeConfig()
@@ -17,25 +17,25 @@ const generateRefreshToken = (user) => {
     })
 }
 
-// export const decodeRefreshToken = (token) => {
-//     const config = useRuntimeConfig()
+export const decodeRefreshToken = (token) => {
+    const config = useRuntimeConfig()
 
-//     try {
-//         return jwt.verify(token, config.jwtRefreshSecret)
-//     } catch (error) {
-//         return null
-//     }
-// }
+    try {
+        return jwt.verify(token, config.jwtRefreshSecret)
+    } catch (error) {
+        return null
+    }
+}
 
-// export const decodeAccessToken = (token) => {
-//     const config = useRuntimeConfig()
+export const decodeAccessToken = (token) => {
+    const config = useRuntimeConfig()
 
-//     try {
-//         return jwt.verify(token, config.jwtAccessSecret)
-//     } catch (error) {
-//         return null
-//     }
-// }
+    try {
+        return jwt.verify(token, config.jwtAccessSecret)
+    } catch (error) {
+        return null
+    }
+}
 
 
 export const generateTokens = (user) => {
@@ -49,7 +49,7 @@ export const generateTokens = (user) => {
 }
 
 export const sendRefreshToken = (event, token) => {
-    setCookie(event.res, "refresh_token", token, {
+    setCookie(event, "refresh_token", token, {
         httpOnly: true,
         sameSite: true
     })
