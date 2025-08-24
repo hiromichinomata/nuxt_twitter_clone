@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
         await removeRefreshToken(refreshToken)
     } catch (error) { }
 
-    sendRefreshToken(event.res, null)
+    sendRefreshToken(event, null)
 
     return { message: 'Done' }
 })
