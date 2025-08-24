@@ -5,7 +5,7 @@
         <!-- <TweetForm placeholder="Tweet your reply" :reply-to="props.tweet" :user="props.user"
             @on-success="handleFormSuccess" /> -->
 
-        <!-- <TweetListFeed :tweets="replies" /> -->
+        <TweetListFeed :tweets="replies" />
     </div>
 </template>
 <script setup>
